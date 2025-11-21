@@ -20,7 +20,7 @@ error_t open_live_server() {
 error_t open_live_server() {return error;}
 #endif
 
-void print_site_header() {
+void PrintSiteHeader() {
     if (count_graph_files != 0)
         return;
     FILE * fp = fopen(dump_site_name, "w");
@@ -58,7 +58,7 @@ void print_site_header() {
     fclose(fp);
 }
 
-void print_site_toes() {
+void PrintSiteToes() {
     FILE * fp = fopen(dump_site_name, "a");\
     sassert(fp, ERR_PTR_NULL);\
 
@@ -72,21 +72,22 @@ void print_divider(FILE * fp) {
     fprintf(fp, "<h1 style=\"color: #a30f7eff\">||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</h1>\n");
 }
 
-void print_to_html(DiffTree_t *tree, TreeCmd command, TreeElem_t value) {
+void print_to_html(DiffTree_t *tree, TreeNeedDiv needs_division, const char * str) {
     sassert(tree,   ERR_PTR_NULL);
 
     FILE * fp = fopen(dump_site_name, "a");
     sassert(fp, ERR_PTR_NULL);
 
-    print_divider(fp);
+    if (needs_division == YES_DIVISION)
+        print_divider(fp);
 
     TreeErr err = TreeVerify(tree);
     if (err != OK) {
         fprintf(fp, "<h1>WARNING: this operation is incorrect because of err:</h1><ul>");
-        fprintf(fp, "<h3><li>%s: %s</li></h3>", errors_text[err], error.error_info[err]);
+        fprintf(fp, "<h3><li>%s: %s</li></h3></ul>", errors_text[err], error.error_info[err]);
     }
-    fprintf(fp, "num_of_nodes: %zu\n", tree->num_of_nodes);
-    fprintf(fp, "<h2> %s (value: %s)</h2>", command_desc[command], value);
+    // fprintf(fp, "num_of_nodes: %zu\n", tree->num_of_nodes);
+    fprintf(fp, "<h2>%s</h2>", str);
     fprintf(fp, "<div class=\"images\">\n"
                 "<img src=\"graph/graph%d.png\" class=\"img1\">\n</div>\n",  count_graph_files);
     count_graph_files++;
@@ -94,7 +95,8 @@ void print_to_html(DiffTree_t *tree, TreeCmd command, TreeElem_t value) {
 }
 
 void GraphDumpPrintNode(FILE *fp, Node_t *node, TreeErr is_err) {
-    sassert(node, ERR_PTR_NULL);
+    if (node == NULL)
+        return;
 
     fprintf(fp, "{\n"
                 "rank=0\n"
@@ -130,10 +132,9 @@ void GraphDumpPrintNode(FILE *fp, Node_t *node, TreeErr is_err) {
     fprintf(fp, "</TR>\n"
                 "</TABLE>>]\n"
                 "}\n");
-    
 }
 
-error_t create_tree_graph(DiffTree_t *tree) {
+TreeErr create_tree_graph(DiffTree_t *tree) {
     sassert(tree, ERR_PTR_NULL);
 
     int counter = 0;
@@ -167,8 +168,18 @@ error_t create_tree_graph(DiffTree_t *tree) {
     if (system(command) != 0) {
         add_error(ERR_CMD_INVALID, "%s", command);
     }
+    return OK;
+}
 
-    return error;
+size_t GetNumOfNodes(Node_t * node) {
+    if (node == NULL)
+        return 0;
+    size_t NumNodes = 0;
+    if (node->left != NULL)
+        NumNodes++;
+    if (node->right != NULL)
+        NumNodes++;
+    return 1 + GetNumOfNodes(node->left) + GetNumOfNodes(node->right);
 }
 
 void get_timed_file_name(char log_file_name[]) {
@@ -182,7 +193,8 @@ void get_timed_file_name(char log_file_name[]) {
 }
 
 TreeErr print_nodes_to_dump_file(Node_t * node, DiffTree_t * tree, FILE *fp, dirType type_of_direction, int *counter) {
-    sassert(node,   ERR_PTR_NULL);
+    if (node == NULL)
+        return OK;
     sassert(fp,     ERR_PTR_NULL);
 
     if (*counter > tree->num_of_nodes) {

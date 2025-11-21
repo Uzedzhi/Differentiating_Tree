@@ -13,6 +13,8 @@
 #include "tree.h"
 #include "treedump.h"
 #include "treeverifier.h"
+#include "treelatexdump.h"
+#include "treeoptimize.h"
 
 error_t error = {};
 
@@ -26,8 +28,12 @@ Node_t * create_node() {
 void TreeCtorDiff_internal(DiffTree_t * tree) {
     sassert(tree, ERR_PTR_NULL);
 
-    tree->root = create_node();
-    tree->num_of_nodes = 1;
+    tree->variables = (Var_t *) calloc(ARR_INIT_SIZE, sizeof(Var_t));
+    sassert(tree->variables, ERR_PTR_NULL);
+
+    for (size_t i = 0; i < ARR_INIT_SIZE; i++) {
+        tree->variables[i].value = POISON;
+    }
 }
 
 void NodeDtorDiff(Node_t **node) {
@@ -37,8 +43,10 @@ void NodeDtorDiff(Node_t **node) {
         NodeDtorDiff(&(*node)->left);
     if (*node != NULL && (*node)->right != NULL)
         NodeDtorDiff(&(*node)->right);
-    if ((*node)->type == TYPE_VAR && (*node)->value.var.name != NULL)
+    if ((*node)->type == TYPE_VAR && (*node)->value.var.name != NULL) {
         free((*node)->value.var.name);
+        (*node)->value.var.name = NULL;
+    }
     free(*node);
     *node = NULL;
 }
@@ -47,11 +55,10 @@ void TreeDtorDiff(DiffTree_t* tree) {
         if (tree->root != NULL) {
             NodeDtorDiff(&(tree->root));
         }
-        free(tree->root);
+        free(tree->variables);
         free(tree);
     }
 
-    print_site_toes();
 }
 
 void skip_line(FILE *fp) {
@@ -113,8 +120,8 @@ TreeErr write_Tree_to_file(DiffTree_t *tree, const char * log_file_name) {
     return OK;
 }
 
-static unsigned long sdbm(const char * str) {
-    unsigned long hash = 0;
+size_t sdbm(const char * str) {
+    size_t hash = 0;
     int c = 0;
 
     while ((c = *str++) != '\0') {
@@ -125,7 +132,7 @@ static unsigned long sdbm(const char * str) {
 }
 
 bool is_same(double a, double b) {
-    return abs(a - b) < FLT_ERR;
+    return fabs(a - b) < FLT_ERR;
 }
 
 double CalculateTree(DiffTree_t *tree) {
@@ -144,6 +151,7 @@ double CalculateTree(DiffTree_t *tree) {
 double GetCalculatedAnswer(DiffTree_t *tree, Node_t *cur_node) {
     size_t hash_cur = 0;
     size_t i = 0;
+    bool found = false;
     switch(cur_node->type) {
         case TYPE_OP:
             switch((cur_node->value).operation) {
@@ -151,18 +159,36 @@ double GetCalculatedAnswer(DiffTree_t *tree, Node_t *cur_node) {
                 case OP_DIV: return AL / AR;
                 case OP_MUL: return AL * AR;
                 case OP_SUB: return AL - AR;
+                case OP_POW: return pow(AL, AR);
+                case OP_SIN: return sin(AR);
+                case OP_COS: return cos(AR);
+                case OP_TG:  return tan(AR);
+                case OP_CTG: return cos(AR) / sin(AR);
+                case OP_LN:  return log(AR);
+                case OP_LOG: return log(AR) / log(AL);
             }
             break;
         case TYPE_NUM:
             return (cur_node->value).lf;
         case TYPE_VAR:
             hash_cur = sdbm((cur_node->value).var.name);
-            if (is_same(cur_node->value.var.value, POISON)) {
+            while (tree->variables[i].value != POISON) {
+                if (tree->variables[i].hash == hash_cur) {
+                    found = true;
+                    break;
+                }
+                i++;
+            }
+            if (!found) {
                 printf("\nwhat value does %s have? ", cur_node->value.var.name);
-                while(scanf("%lf", &(cur_node->value.var.value)) != 1) {
+                while(scanf("%lf", &(tree->variables[i].value)) != 1) {
+                    skip_line(stdin);
                     printf("\n please try again: ");
                 }
             }
+            cur_node->value.var.value = tree->variables[i].value;
+            tree->variables[i].hash = hash_cur;
+            tree->variables[i].name = cur_node->value.var.name;
             return cur_node->value.var.value;
         default:
             return NAN;
@@ -176,7 +202,7 @@ double GetCalculatedAnswer(DiffTree_t *tree, Node_t *cur_node) {
 char * get_next_word_in_quotes(int *pos, char *file_buffer) {
     sassert(file_buffer, ERR_PTR_NULL);
 
-    size_t word_length = strchr(file_buffer, '\"') - file_buffer;
+    size_t word_length = strchr(file_buffer + *pos, '\"') - file_buffer - *pos;
     char * data = (char *) calloc(word_length + 1, sizeof(char));
     sassert(data, ERR_PTR_NULL);
 
@@ -223,7 +249,7 @@ TreeErr GetTypeAndValue(DiffTree_t *tree, int *pos, char * buffer, TreeType_t *t
     return ERR_INVALID_TYPE;
     END
 
-    (*pos) += strchr(buffer, '\"') + 1 - buffer;
+    (*pos) += strchr(buffer + *pos, '\"') + 1 - buffer - *pos;
     return OK;
     
 }
@@ -234,9 +260,14 @@ Node_t * NewNode(TreeType_t type, TreeElem_u value, Node_t *left, Node_t *right)
 
     node->type  = type;
     node->value = value;
+    if (node->type == TYPE_VAR)
+        node->value.var.name = strdup(node->value.var.name);
     node->left  = left;
     node->right = right;
-
+    if (node->left != NULL)
+        node->left->parent = node;
+    if (node->right != NULL)
+        node->right->parent = node;
     return node;
 }
 
@@ -247,76 +278,227 @@ Node_t * CopyNodes(Node_t *CopyNode) {
     node->rank  = CopyNode->rank;
     node->value = CopyNode->value;
     node->type  = CopyNode->type;
+    if (node->type == TYPE_VAR)
+        node->value.var.name = strdup(node->value.var.name);
 
-    if (CopyNode->left != NULL)
+    if (CopyNode->left != NULL) {
         node->left  = CopyNodes(CopyNode->left);
-    if (CopyNode->right != NULL)
+        if (node->left != NULL)
+            node->left->parent = node;
+    }
+    if (CopyNode->right != NULL) {
         node->right = CopyNodes(CopyNode->right);
+        if (node->right != NULL)
+            node->right->parent = node;
+    }
 
     return node;
 }
 
 void place_parents(Node_t *node, size_t *num_of_nodes) {
     if (node->left != NULL) {
-        node->left->parent = node;
         (*num_of_nodes)++;
         place_parents(node->left, num_of_nodes);
     }
     if (node->right != NULL) {
-        node->right->parent = node;
         (*num_of_nodes)++;
         place_parents(node->right, num_of_nodes);
     }
 }
 
-DiffTree_t * dT(Node_t *node, const char * DiffVarName) {
-    sassert(node, ERR_PTR_NULL);
-
-    size_t num_of_nodes = 0;
-    TreeCtorDiff(tree);
-
-    tree->root = differentiate(node, DiffVarName);
-
-    place_parents(tree->root, &num_of_nodes);
-    tree->num_of_nodes = num_of_nodes + 1;
-    
-    create_tree_graph(tree);
-    print_to_html(tree, INSERT, 0);
-    return tree;
+#define RETURN_AND_DUMP(diff_node, ...) {\
+    result_node = diff_node;\
+    char str[MAX_STR_SIZE] = {};\
+    snprintf(str, MAX_STR_SIZE - 1, __VA_ARGS__);\
+    DUMPNODE(node, YES_DIVISION, "before differentiating");\
+    DUMPNODE(result_node, NO_DIVISION, __VA_ARGS__);\
+    WriteLatexStepOfDifferentiation(node, result_node, DiffVarName, str);\
+    return result_node;\
 }
-
-#define ONE_ NewNode(TYPE_NUM, (TreeElem_u) {1.0}, NULL, NULL)
-#define ZERO_ NewNode(TYPE_NUM, (TreeElem_u) {0.0}, NULL, NULL)
-#define ADD_(node1, node2) NewNode(TYPE_OP, (TreeElem_u) {OP_ADD}, node1, node2)
-#define MUL_(node1, node2) NewNode(TYPE_OP, (TreeElem_u) {OP_MUL}, node1, node2)
-#define DIV_(node1, node2) NewNode(TYPE_OP, (TreeElem_u) {OP_DIV}, node1, node2)
-#define SUB_(node1, node2) NewNode(TYPE_OP, (TreeElem_u) {OP_SUB}, node1, node2)
-#define dL differentiate(node->left, DiffVarName)
-#define dR differentiate(node->right, DiffVarName)
-#define cR CopyNodes(node->left)
+#define NUM_(num) NewNode(TYPE_NUM, (TreeElem_u) {.lf  = (double) num}, NULL, NULL)
+#define ADD_(node1, node2) NewNode(TYPE_OP, (TreeElem_u) {.operation = OP_ADD}, node1, node2)
+#define MUL_(node1, node2) NewNode(TYPE_OP, (TreeElem_u) {.operation = OP_MUL}, node1, node2)
+#define LN_(node1) NewNode(TYPE_OP, (TreeElem_u) {.operation = OP_LN}, NUM_(0), node1)
+#define LOG_(node1, node2) NewNode(TYPE_OP, (TreeElem_u) {.operation = OP_LOG}, node1, node2)
+#define DIV_(node1, node2) NewNode(TYPE_OP, (TreeElem_u) {.operation = OP_DIV}, node1, node2)
+#define POW_(node1, node2) NewNode(TYPE_OP, (TreeElem_u) {.operation = OP_POW}, node1, node2)
+#define SUB_(node1, node2) NewNode(TYPE_OP, (TreeElem_u) {.operation = OP_SUB}, node1, node2)
+#define SIN_(node1, node2) NewNode(TYPE_OP, (TreeElem_u) {.operation = OP_SIN}, node1, node2)
+#define COS_(node1, node2) NewNode(TYPE_OP, (TreeElem_u) {.operation = OP_COS}, node1, node2)
+#define dL differentiate(tree, node->left, num_of_nodes, DiffVarName)
+#define dR differentiate(tree, node->right, num_of_nodes, DiffVarName)
+#define cR CopyNodes(node->right)
 #define cL CopyNodes(node->left)
 
-Node_t * differentiate(Node_t * node, const char * DiffVarName) {
+Node_t * differentiate(DiffTree_t *tree, Node_t * node, size_t *num_of_nodes, const char * DiffVarName) {
     sassert(node, ERR_PTR_NULL);
+    Node_t *result_node = NULL;
     switch(node->type) {
         case TYPE_NUM:
-            return ZERO_;
+            RETURN_AND_DUMP(NUM_(0), "differential of number is 0");
         case TYPE_OP:
-            switch((node->value).operation) {
+            switch(node->value.operation) {
                 case OP_ADD:
-                    return ADD_(dL, dR);
+                    RETURN_AND_DUMP(ADD_(dL, dR), "differential of addition (x + y)\' = x\' + y\'");
                 case OP_DIV:
-                    return NULL;
+                    RETURN_AND_DUMP(DIV_(
+                                        SUB_(
+                                            MUL_(dL, cR),
+                                            MUL_(cL, dR)
+                                        ),
+                                        MUL_(cR, cR)
+                                    ), "differential of division (x * y)\' = x * y\' + x\' * y");
                 case OP_MUL:
-                    return ADD_(MUL_(dL, cR), MUL_(cL, dR));
+                    RETURN_AND_DUMP(ADD_(
+                                        MUL_(dL, cR),
+                                        MUL_(cL, dR)
+                                    ), "differential of multiplication (x * y)' = x * y' + x' * y");
                 case OP_SUB:
-                    return SUB_(dL, dR);
+                    RETURN_AND_DUMP(SUB_(dL, dR), "differential of difference (x - y)\' = x\' s- y\'");
+                case OP_SIN:
+                    RETURN_AND_DUMP(MUL_(
+                                        COS_(NUM_(0), cR),
+                                        dR
+                                    ), "differential of sin (sin(x))\' = cos(x)  * x\'");
+                case OP_COS:
+                    RETURN_AND_DUMP(MUL_(
+                                        MUL_(
+                                            SIN_(NUM_(0), cR),
+                                            NUM_(-1)
+                                        ),
+                                        dR
+                                    ), "differential of cos (cos(x))\' = -sin(x)  * x\'");
+                case OP_TG:
+                    RETURN_AND_DUMP(DIV_(
+                                        dR,
+                                        MUL_(
+                                            COS_(NUM_(0), cR),
+                                            COS_(NUM_(0), cR)
+                                        )
+                                    ), "differential of tg (tg(x))\' = x\' / cos^2(x)\'");
+                case OP_CTG:
+                    RETURN_AND_DUMP(DIV_(
+                                        dR,
+                                        MUL_(
+                                            SIN_(NUM_(0), cR),
+                                            SIN_(NUM_(0), cR)
+                                        )
+                                    ), "differential of ctg (ctg(x))\' = x\' / sin^2(x)\'");
+                case OP_POW:
+                    switch(GetVarPosType(node, DiffVarName)) {
+                        case NUMNUM:
+                            RETURN_AND_DUMP(NUM_(0), "differential of num to the power of num is 0\n\n"
+                                        "\\(a^b)\' = 0\n");
+                        case VARNUM:
+                            RETURN_AND_DUMP(MUL_(
+                                                MUL_(
+                                                    cR,
+                                                    POW_(
+                                                        cL, 
+                                                        SUB_(cR, NUM_(1))
+                                                    )
+                                                ),
+                                                dL
+                                            ), "differential of var to the power of num is (x^a)\' = a * x^(a-1) * x\'\n\n");
+                        case NUMVAR:
+                            RETURN_AND_DUMP(MUL_(
+                                                MUL_(
+                                                    LN_(cL),
+                                                    POW_(
+                                                        cL, 
+                                                        cR
+                                                    )
+                                                ),
+                                                dR
+                                            ), "differential of num to the power of var is (a^x)\' = a^x * ln(a) * x\'\n\n");
+                        case VARVAR:
+                            RETURN_AND_DUMP(MUL_(
+                                                POW_(
+                                                    NUM_(CONST_E), 
+                                                    MUL_(
+                                                        cR,
+                                                        LN_(cL)
+                                                    )
+                                                ),
+                                                ADD_(
+                                                    MUL_(
+                                                        dR,
+                                                        LN_(cL)
+                                                    ),
+                                                    DIV_(
+                                                        cR,
+                                                        cL
+                                                    )
+                                                )
+                                            ), "differential of var to the power of var is (u^v)\' = e^(v*ln(u)) * (v\' * ln(u) + v/u)\n\n");
+                    }
+                case OP_LN:
+                    RETURN_AND_DUMP(DIV_(
+                                        dR,
+                                        cR
+                                    ), "differential of ln is (ln(x))\' = x\' / x\n\n");
+                case OP_LOG:
+                    switch(GetVarPosType(node, DiffVarName)) {
+                        case NUMNUM:
+                            RETURN_AND_DUMP(NUM_(0), "differential of log of two nums is 0\n\n");
+                        case VARNUM:
+                            RETURN_AND_DUMP(MUL_(
+                                                MUL_(
+                                                    DIV_(
+                                                        POW_(
+                                                            LOG_(cL, cR),
+                                                            NUM_(2)
+                                                        ),
+                                                        MUL_(
+                                                            cR,
+                                                            LN_(cR)
+                                                        )
+                                                    ),
+                                                    NUM_(-1)
+                                                ),
+                                                dR
+                                            ), "differential of log when var is at the base is (log_x (a))\' = -(log^(-2)_x (a) * x\') / (x * ln(a))\n\n");
+                        case NUMVAR:
+                            RETURN_AND_DUMP(DIV_(
+                                                dR,
+                                                MUL_(
+                                                    LN_(cL),
+                                                    cR
+                                                )
+                                            ), "differential of log when at the base is num is (log_a (x))\' = x\' / (x * ln(a))\n\n");
+                        case VARVAR:
+                            RETURN_AND_DUMP(DIV_(
+                                                SUB_(
+                                                    MUL_(
+                                                        DIV_(
+                                                            dR,
+                                                            cR
+                                                        ),
+                                                        LN_(cL)
+                                                    ),
+                                                    MUL_(
+                                                        DIV_(
+                                                            dL,
+                                                            cL
+                                                        ),
+                                                        LN_(cR)
+                                                    )
+                                                ),
+                                                POW_(
+                                                    LN_(cL),
+                                                    NUM_(2)
+                                                )
+                                            ), "differential of log when everywhere is var (log_u (v))\' = (v\' / v * u - u\' / u * v) / ln^2(u)\n\n");
+                    }
             }
         case TYPE_VAR:
-            if (strcmp(node->value.var.name, DiffVarName) == 0)
-                return ONE_;
-            else
-                return ZERO_;
+            if (strcmp(node->value.var.name, DiffVarName) == 0) {
+                RETURN_AND_DUMP(NUM_(1), "differential of variable, which we are differentiating with is 1");
+            }
+            else {
+                RETURN_AND_DUMP(NUM_(0), "differential of variable, which we are NOT differentiating with is 0");
+            }
+        
     }
 
     return NULL;
@@ -332,6 +514,18 @@ Node_t * differentiate(Node_t * node, const char * DiffVarName) {
 #undef dR
 #undef cR
 #undef cL
+
+DiffTree_t * dT(Node_t *node, const char * DiffVarName) {
+    sassert(node, ERR_PTR_NULL);
+
+    size_t num_of_nodes = 0;
+    TreeCtorDiff(tree);
+
+    tree->root = differentiate(tree, node, &num_of_nodes, DiffVarName);
+    tree->num_of_nodes = GetNumOfNodes(tree->root);
+    DUMPTREE(tree, "differentiated tree");
+    return tree;
+}
 
 Node_t * read_node(DiffTree_t *tree, int * pos, int *num_of_nodes, char * buffer) {
     sassert(pos, ERR_PTR_NULL);
@@ -373,7 +567,6 @@ TreeErr MakeTreeFromFile(DiffTree_t *tree, const char * file_name) {
     size_t file_size = get_file_size(fp);
 
     char *file_buffer = (char *) calloc(file_size + 1, sizeof(char));
-    char *ptr_to_start_of_file_buffer = file_buffer;
     sassert(file_buffer, ERR_PTR_NULL);
 
     size_t actually_read = fread(file_buffer, sizeof(char), file_size, fp);
@@ -386,8 +579,7 @@ TreeErr MakeTreeFromFile(DiffTree_t *tree, const char * file_name) {
     tree->root = read_node(tree, &pos, &num_of_nodes, file_buffer);
     tree->num_of_nodes = num_of_nodes;
 
-    create_tree_graph(tree);
-    print_to_html(tree, READ, 0);
+    DUMPTREE(tree, "read tree from file");
 
     free(file_buffer);
     return OK;
@@ -397,21 +589,63 @@ void print_help() {
     printf("you need to specify file name with --file-name");
 }
 
+#define STARTTXTDUMPS() \
+    PrintSiteHeader();\
+    WriteLatexHeader();
+
+#define FINISHTXTDUMPS()\
+    PrintSiteToes();\
+    WriteLatexToes();
+
+
+
 int main(int argc, char * argv[]) {
+    setlocale(LC_ALL, "ru_RU.UTF-8");
+
     if (argc != 2 || strncmp(argv[1], "--", 2) != 0) {
         print_help();
         return OK;
     }
+    STARTTXTDUMPS();
 
     char * file_name = argv[1] + 2;
-
     TreeCtorDiff(tree);
     MakeTreeFromFile(tree, file_name);
     if (error.is_error == true)
         print_error(error, errors_text);
 
+    WriteLatexDifferential(tree->root, "x");
     DiffTree_t * treediff = dT(tree->root, "x");
+    WriteLatexResult(treediff->root, "x", "Результат до оптимизации:");
+
+    bool is_folded = true;
+    TreeErr return_val = TREE_NFOLDED;
+    while (is_folded == true) {
+        is_folded = false;
+        TreeErr return_val_1_optimization = FoldConstantsInNode(treediff->root, &is_folded);
+        WriteLatexResult(treediff->root, "x", "Результат после оптимизации сверткой констант:");
+        DUMPTREE(treediff, "after const folding optimization");
+
+        TreeErr return_val_2_optimization = RemoveUnnecessary(treediff->root, &is_folded);
+        WriteLatexResult(treediff->root, "x", "Результат после оптимизации удаления ненужного:");
+        DUMPTREE(treediff, "after removing unnecessary things optimization");
+
+        if (ISVALUEERROR(return_val_1_optimization) || ISVALUEERROR(return_val_2_optimization))
+            break;
+    }
+
+    double answer = CalculateTree(treediff);
+    printf("answer is %lf\n", answer);
+
     TreeDtorDiff(tree);
     TreeDtorDiff(treediff);
+
+    FINISHTXTDUMPS();
+    MakePdfFromLatex();
+
+    if (error.is_error == true) {
+        print_error(error, errors_text);
+        return error.recently_added_error_int;
+    }
     return 0;
 }

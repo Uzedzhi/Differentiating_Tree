@@ -6,7 +6,7 @@ extern error_t error;
 
 TreeErr NodeVerify(Node_t *node, Node_t *root_ptr) {
     if (node == NULL)
-        ADD_ERROR_AND_RETURN(ERR_PTR_NULL, "node is null");
+        return OK;
     if ((node->left != NULL && node->left->rank < node->rank) || (node->right != NULL && node->right->rank < node->rank)) {
         ADD_ERROR_AND_RETURN(ERR_NODE_POINTS_TO_LOWER_RANK, "L or R points to invalid rank:\n"
                                                             "cur: %p, c_r: %d, l_r: %d",
@@ -41,17 +41,19 @@ TreeErr TreeVerify(DiffTree_t *tree) {
 
     int counter = 0;
     TreeErr err = AllNodesVerify(tree->root, &counter, tree);
-    if (counter != tree->num_of_nodes) {
-        ADD_ERROR_AND_RETURN(ERR_INVALID_SIZE, "size: %d, exp_size: %zu", counter, tree->num_of_nodes);
-    }
+    // if (counter != tree->num_of_nodes) {
+    //     ADD_ERROR_AND_RETURN(ERR_INVALID_SIZE, "size: %d, exp_size: %zu", counter, tree->num_of_nodes);
+    // }
 
     return err;
 }
 
 TreeErr AllNodesVerify(Node_t* node, int *counter, DiffTree_t * tree) {
+    if (node == NULL)
+        return OK;
     CHECK_FUNC_AND_RET_IF_ERR(NodeVerify(node, tree->root));
-    if (*counter > tree->num_of_nodes)
-        ADD_ERROR_AND_RETURN(ERR_INVALID_SIZE, "size: %d, max_size: %zu", *counter, tree->num_of_nodes);
+    // if (*counter > tree->num_of_nodes)
+    //     ADD_ERROR_AND_RETURN(ERR_INVALID_SIZE, "size: %d, max_size: %zu", *counter, tree->num_of_nodes);
     
     (*counter)++;
     if (node->left != NULL)
