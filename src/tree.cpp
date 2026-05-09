@@ -6,8 +6,6 @@
 #include <time.h>
 #include "dirent.h"
 
-#define ERROR_ADD_DEBUG
-
 #include "../my_libs/sassert.h"
 #include "../my_libs/error_manage.h"
 #include "tree.h"
@@ -72,7 +70,7 @@ void write_nodes_to_file(Node_t *node, FILE *fp) {
         fprintf(fp, ")");
 }
 
-TreeErr write_Tree_to_file(DiffTree_t *tree, const char * log_file_name) {
+int write_Tree_to_file(DiffTree_t *tree, const char * log_file_name) {
     sassert(tree, ERR_PTR_NULL);
 
     FILE *fp = fopen(log_file_name, "w");
@@ -178,7 +176,7 @@ double GetCalculatedAnswer(DiffTree_t *tree, Node_t *cur_node, size_t KnownVarHa
 #undef AR
 
 #define RETURN_AND_DUMP(diff_node, ...) {\
-    result_node = diff_node;\
+    Node_t *result_node = diff_node;\
     char str[MAX_STR_SIZE] = {};\
     snprintf(str, MAX_STR_SIZE - 1, __VA_ARGS__);\
     if (need_dump) {\
@@ -212,8 +210,8 @@ DiffTree_t *GetTangentTree(DiffTree_t *tree, DiffTree_t *DiffTree, double a, con
     sassert(DiffTree, ERR_PTR_NULL);
 
 
-    double FxResult     = GetCalculatedAnswer(tree, tree->root, sdbm(VarName), 0);
-    double DiffFxResult = GetCalculatedAnswer(DiffTree, DiffTree->root, sdbm(VarName), 0);
+    double FxResult     = GetCalculatedAnswer(tree, tree->root, sdbm(VarName), a);
+    double DiffFxResult = GetCalculatedAnswer(DiffTree, DiffTree->root, sdbm(VarName), a);
     TreeCtorDiff(TangentTree);
     TangentTree->root = ADD_(
                             MUL_(
@@ -229,250 +227,363 @@ DiffTree_t *GetTangentTree(DiffTree_t *tree, DiffTree_t *DiffTree, double a, con
     return TangentTree;
 }
 
-Node_t * differentiate(FILE *fp, Node_t * node, size_t *num_of_nodes, const char * DiffVarName, bool need_dump) {
+double GetAnswerNewtonsMethod(DiffTree_t * func, const char * VarName) {
+    size_t num_of_nodes = 0;
+    double cur_point = 0.0;
+    double TangentRootAnswer = 0.0;
+    double FuncAnswerWithTangentRoot = NAN;
+    TreeCtorDiff(DiffTree);
+    
+    DiffTree->root      = differentiate(stdout, func->root, &num_of_nodes, VarName, false);
+    double FxResult     = 0.0;
+    double DiffFxResult = 0.0;
+    size_t iterations = 0;
+
+    while (!is_same(FuncAnswerWithTangentRoot, 0.0) && iterations < 100) {
+        FxResult            = GetCalculatedAnswer(func, func->root, sdbm(VarName), cur_point);
+        DiffFxResult        = GetCalculatedAnswer(DiffTree, DiffTree->root, sdbm(VarName), cur_point);
+        if (DiffFxResult == 0)
+            TangentRootAnswer = cur_point;
+        else
+            TangentRootAnswer = (-FxResult) / (DiffFxResult) + cur_point;
+        FuncAnswerWithTangentRoot = GetCalculatedAnswer(func, func->root, sdbm(VarName), TangentRootAnswer);
+        cur_point = TangentRootAnswer;
+        iterations++;
+    }
+    if (iterations == 100)
+        cur_point = NAN;
+
+    TreeDtorDiff(DiffTree);
+    return cur_point;
+
+}
+
+Node_t * DiffTypeNum(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                     const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(NUM_(0), "differential of number is 0");
+}
+
+Node_t * DiffTypeVar(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                     const char *DiffVarName, bool need_dump) {
+    if (strcmp(node->value.var.name, DiffVarName) == 0) {
+        RETURN_AND_DUMP(NUM_(1), "differential of variable, which we are differentiating with is 1");
+    }
+    else {
+        RETURN_AND_DUMP(NUM_(0), "differential of variable, which we are NOT differentiating with is 0");
+    }
+}
+
+Node_t * DiffOpAdd(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                   const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(ADD_(dL, dR), "differential of addition (x + y)\' = x\' + y\'");
+}
+
+Node_t * DiffOpSub(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                   const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(SUB_(dL, dR), "differential of difference (x - y)\' = x\' - y\'");
+}
+
+Node_t * DiffOpMul(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                   const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(ADD_(
+                        MUL_(dL, cR),
+                        MUL_(cL, dR)
+                    ), "differential of multiplication (x * y)' = x * y' + x' * y");
+}
+
+Node_t * DiffOpDiv(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                   const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(DIV_(
+                        SUB_(
+                            MUL_(dL, cR),
+                            MUL_(cL, dR)
+                        ),
+                        POW_(cR, NUM_(2))
+                    ), "differential of division (x / y)\' = (x\' * y - x * y\') / y^2");
+}
+
+Node_t * DiffOpPow(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                   const char *DiffVarName, bool need_dump) {
+    switch(GetVarPosType(node, DiffVarName)) {
+        case NUMNUM:
+            RETURN_AND_DUMP(NUM_(0), "differential of num to the power of num is 0\n\n"
+                        "\\(a^b)\' = 0\n");
+        case VARNUM:
+            RETURN_AND_DUMP(MUL_(
+                                MUL_(
+                                    cR,
+                                    POW_(
+                                        cL, 
+                                        SUB_(cR, NUM_(1))
+                                    )
+                                ),
+                                dL
+                            ), "differential of var to the power of num is (x^a)\' = a * x^(a-1) * x\'\n\n");
+        case NUMVAR:
+            RETURN_AND_DUMP(MUL_(
+                                MUL_(
+                                    LN_(cL),
+                                    POW_(
+                                        cL, 
+                                        cR
+                                    )
+                                ),
+                                dR
+                            ), "differential of num to the power of var is (a^x)\' = a^x * ln(a) * x\'\n\n");
+        case VARVAR:
+            RETURN_AND_DUMP(MUL_(
+                                POW_(
+                                    NUM_(CONST_E), 
+                                    MUL_(
+                                        cR,
+                                        LN_(cL)
+                                    )
+                                ),
+                                ADD_(
+                                    MUL_(
+                                        dR,
+                                        LN_(cL)
+                                    ),
+                                    DIV_(
+                                        cR,
+                                        cL
+                                    )
+                                )
+                            ), "differential of var to the power of var is (u^v)\' = e^(v*ln(u)) * (v\' * ln(u) + v/u)\n\n");
+    }
+    return NULL;
+}
+
+Node_t * DiffOpLn(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                  const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(DIV_(
+                        dR,
+                        cR
+                    ), "differential of ln is (ln(x))\' = x\' / x\n\n");
+}
+
+Node_t * DiffOpLog(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                   const char *DiffVarName, bool need_dump) {
+    switch(GetVarPosType(node, DiffVarName)) {
+        case NUMNUM:
+            RETURN_AND_DUMP(NUM_(0), "differential of log of two nums is 0\n\n");
+        case VARNUM:
+            RETURN_AND_DUMP(MUL_(
+                                MUL_(
+                                    DIV_(
+                                        POW_(
+                                            LOG_(cL, cR),
+                                            NUM_(2)
+                                        ),
+                                        MUL_(
+                                            cR,
+                                            LN_(cR)
+                                        )
+                                    ),
+                                    NUM_(-1)
+                                ),
+                                dR
+                            ), "differential of log when var is at the base is (log_x (a))\' = -(log^(-2)_x (a) * x\') / (x * ln(a))\n\n");
+        case NUMVAR:
+            RETURN_AND_DUMP(DIV_(
+                                dR,
+                                MUL_(
+                                    LN_(cL),
+                                    cR
+                                )
+                            ), "differential of log when at the base is num is (log_a (x))\' = x\' / (x * ln(a))\n\n");
+        case VARVAR:
+            RETURN_AND_DUMP(DIV_(
+                                SUB_(
+                                    MUL_(
+                                        DIV_(
+                                            dR,
+                                            cR
+                                        ),
+                                        LN_(cL)
+                                    ),
+                                    MUL_(
+                                        DIV_(
+                                            dL,
+                                            cL
+                                        ),
+                                        LN_(cR)
+                                    )
+                                ),
+                                POW_(
+                                    LN_(cL),
+                                    NUM_(2)
+                                )
+                            ), "differential of log when everywhere is var (log_u (v))\' = (v\' / v * u - u\' / u * v) / ln^2(u)\n\n");
+    }
+    return NULL;
+}
+
+Node_t * DiffOpSin(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                   const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(MUL_(
+                        COS_(NUM_(0), cR),
+                        dR
+                    ), "differential of sin (sin(x))\' = cos(x) * x\'");
+}
+
+Node_t * DiffOpCos(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                   const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(MUL_(
+                        MUL_(
+                            SIN_(NUM_(0), cR),
+                            NUM_(-1)
+                        ),
+                        dR
+                    ), "differential of cos (cos(x))\' = -sin(x) * x\'");
+}
+
+Node_t * DiffOpTg(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                  const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(DIV_(
+                        dR,
+                        POW_(
+                            COS_(NUM_(0), cR),
+                            NUM_(2)
+                        )
+                    ), "differential of tg (tg(x))\' = x\' / cos^2(x)");
+}
+
+Node_t * DiffOpCtg(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                   const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(DIV_(
+                        dR,
+                        POW_(
+                            SIN_(NUM_(0), cR),
+                            NUM_(2)
+                        )
+                    ), "differential of ctg (ctg(x))\' = x\' / sin^2(x)");
+}
+
+Node_t * DiffOpArcsin(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                      const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(DIV_(
+                        dR,
+                        POW_(
+                            SUB_(NUM_(1), POW_(cR, NUM_(2))),
+                            NUM_(0.5)
+                        )
+                    ), "differential of arcsin is (arcsin(x))' = x' / sqrt(1 - x^2)\n\n");
+}
+
+Node_t * DiffOpArccos(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                      const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(MUL_(
+                        NUM_(-1),
+                        DIV_(
+                            dR,
+                            POW_(
+                                SUB_(NUM_(1), POW_(cR, NUM_(2))),
+                                NUM_(0.5)
+                            )
+                        )
+                    ), "differential of arccos is (arccos(x))' = -x' / sqrt(1 - x^2)\n\n");
+}
+
+Node_t * DiffOpArctg(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                     const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(DIV_(
+                        dR,
+                        ADD_(
+                            NUM_(1),
+                            POW_(cR, NUM_(2))
+                        )
+                    ), "differential of arctg is (arctg(x))' = x' / (1 + x^2)\n\n");
+}
+
+Node_t * DiffOpArcctg(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                      const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(MUL_(
+                        NUM_(-1),
+                        DIV_(
+                            dR,
+                            ADD_(
+                                NUM_(1),
+                                POW_(cR, NUM_(2))
+                            )
+                        )
+                    ), "differential of arcctg is (arcctg(x))' = -x' / (1 + x^2)\n\n");
+}
+
+Node_t * DiffOpSh(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                  const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(MUL_(
+                        dR,
+                        CH_(cR)
+                    ), "differential of sh is (sh(x))\' = x\' * ch(x)\n\n");
+}
+
+Node_t * DiffOpCh(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                  const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(MUL_(
+                        dR,
+                        SH_(cR)
+                    ), "differential of ch is (ch(x))\' = x\' * sh(x)\n\n");
+}
+
+Node_t * DiffOpTh(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                  const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(DIV_(
+                        dR,
+                        POW_(
+                            CH_(cR),
+                            NUM_(2)
+                        )
+                    ), "differential of th is (th(x))\' = x\' / ch^2(x)\n\n");
+}
+
+Node_t * DiffOpCth(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                   const char *DiffVarName, bool need_dump) {
+    RETURN_AND_DUMP(DIV_(
+                        MUL_(
+                            NUM_(-1),
+                            dR
+                        ),
+                        POW_(
+                            SH_(cR),
+                            NUM_(2)
+                        )
+                    ), "differential of cth is (cth(x))\' = -x\' / sh^2(x)\n\n");
+}
+
+Node_t * differentiate(FILE *fp, Node_t *node, size_t *num_of_nodes, 
+                       const char *DiffVarName, bool need_dump) {
     sassert(node, ERR_PTR_NULL);
-    Node_t *result_node = NULL;
 
     switch(node->type) {
-        case TYPE_NUM:
-            RETURN_AND_DUMP(NUM_(0), "differential of number is 0");
+        case TYPE_NUM: return DiffTypeNum(fp, node, num_of_nodes, DiffVarName, need_dump);
+        case TYPE_VAR: return DiffTypeVar(fp, node, num_of_nodes, DiffVarName, need_dump);
         case TYPE_OP:
             switch(node->value.operation) {
-                case OP_ADD:
-                    RETURN_AND_DUMP(ADD_(dL, dR), "differential of addition (x + y)\' = x\' + y\'");
-                case OP_DIV:
-                    RETURN_AND_DUMP(DIV_(
-                                        SUB_(
-                                            MUL_(dL, cR),
-                                            MUL_(cL, dR)
-                                        ),
-                                        POW_(cR, NUM_(2))
-                                    ), "differential of division (x * y)\' = x * y\' + x\' * y");
-                case OP_MUL:
-                    RETURN_AND_DUMP(ADD_(
-                                        MUL_(dL, cR),
-                                        MUL_(cL, dR)
-                                    ), "differential of multiplication (x * y)' = x * y' + x' * y");
-                case OP_SUB:
-                    RETURN_AND_DUMP(SUB_(dL, dR), "differential of difference (x - y)\' = x\' s- y\'");
-                case OP_SIN:
-                    RETURN_AND_DUMP(MUL_(
-                                        COS_(NUM_(0), cR),
-                                        dR
-                                    ), "differential of sin (sin(x))\' = cos(x)  * x\'");
-                case OP_COS:
-                    RETURN_AND_DUMP(MUL_(
-                                        MUL_(
-                                            SIN_(NUM_(0), cR),
-                                            NUM_(-1)
-                                        ),
-                                        dR
-                                    ), "differential of cos (cos(x))\' = -sin(x)  * x\'");
-                case OP_TG:
-                    RETURN_AND_DUMP(DIV_(
-                                        dR,
-                                        POW_(
-                                            COS_(NUM_(0), cR),
-                                            NUM_(2)
-                                        )
-                                    ), "differential of tg (tg(x))\' = x\' / cos^2(x)\'");
-                case OP_CTG:
-                    RETURN_AND_DUMP(DIV_(
-                                        dR,
-                                        POW_(
-                                            SIN_(NUM_(0), cR),
-                                            NUM_(2)
-                                        )
-                                    ), "differential of ctg (ctg(x))\' = x\' / sin^2(x)\'");
-                case OP_POW:
-                    switch(GetVarPosType(node, DiffVarName)) {
-                        case NUMNUM:
-                            RETURN_AND_DUMP(NUM_(0), "differential of num to the power of num is 0\n\n"
-                                        "\\(a^b)\' = 0\n");
-                        case VARNUM:
-                            RETURN_AND_DUMP(MUL_(
-                                                MUL_(
-                                                    cR,
-                                                    POW_(
-                                                        cL, 
-                                                        SUB_(cR, NUM_(1))
-                                                    )
-                                                ),
-                                                dL
-                                            ), "differential of var to the power of num is (x^a)\' = a * x^(a-1) * x\'\n\n");
-                        case NUMVAR:
-                            RETURN_AND_DUMP(MUL_(
-                                                MUL_(
-                                                    LN_(cL),
-                                                    POW_(
-                                                        cL, 
-                                                        cR
-                                                    )
-                                                ),
-                                                dR
-                                            ), "differential of num to the power of var is (a^x)\' = a^x * ln(a) * x\'\n\n");
-                        case VARVAR:
-                            RETURN_AND_DUMP(MUL_(
-                                                POW_(
-                                                    NUM_(CONST_E), 
-                                                    MUL_(
-                                                        cR,
-                                                        LN_(cL)
-                                                    )
-                                                ),
-                                                ADD_(
-                                                    MUL_(
-                                                        dR,
-                                                        LN_(cL)
-                                                    ),
-                                                    DIV_(
-                                                        cR,
-                                                        cL
-                                                    )
-                                                )
-                                            ), "differential of var to the power of var is (u^v)\' = e^(v*ln(u)) * (v\' * ln(u) + v/u)\n\n");
-                    }
-                case OP_LN:
-                    RETURN_AND_DUMP(DIV_(
-                                        dR,
-                                        cR
-                                    ), "differential of ln is (ln(x))\' = x\' / x\n\n");
-                case OP_SH:  
-                    RETURN_AND_DUMP(MUL_(
-                                        dR,
-                                        CH_(cR)
-                                    ), "differential of sh is (sh(x))\' = x\' * ch(x)\n\n");      
-                case OP_CH:  
-                   RETURN_AND_DUMP(MUL_(
-                                        dR,
-                                        SH_(cR)
-                                    ), "differential of ch is (ch(x))\' = x\' sh(x)\n\n");
-                case OP_CTH: 
-                    RETURN_AND_DUMP(DIV_(
-                                        MUL_(
-                                            NUM_(-1),
-                                            dR
-                                        ),
-                                        POW_(
-                                            SH_(cR),
-                                            NUM_(2)
-                                        )
-                                    ), "differential of cth is (cth(x))\' = -x\' sh^2(x)\n\n");
-                
-                case OP_TH:  
-                    RETURN_AND_DUMP(DIV_(
-                                        dR,
-                                        POW_(
-                                            CH_(cR),
-                                            NUM_(2)
-                                        )
-                                    ), "differential of ch is ((th(x))\' = x\' ch^2(x)\n\n");
-                case OP_ARCSIN:
-                    RETURN_AND_DUMP(DIV_(
-                                        dR,
-                                        POW_(
-                                            SUB_(NUM_(1), POW_(cR, NUM_(2))),
-                                            NUM_(0.5)
-                                        )
-                                    ), "differential of arcsin is (arcsin(x))' = x' / sqrt(1 - x^2)\n\n");
-
-                case OP_ARCCOS:
-                    RETURN_AND_DUMP(MUL_(
-                                        NUM_(-1),
-                                        DIV_(
-                                            dR,
-                                            POW_(
-                                                SUB_(NUM_(1), POW_(cR, NUM_(2))),
-                                                NUM_(0.5)
-                                            )
-                                        )
-                                    ), "differential of arccos is (arccos(x))' = -x' / sqrt(1 - x^2)\n\n");
-
-                case OP_ARCTG:
-                    RETURN_AND_DUMP(DIV_(
-                                        dR,
-                                        ADD_(
-                                            NUM_(1),
-                                            POW_(cR, NUM_(2))
-                                        )
-                                    ), "differential of arctg is (arctg(x))' = x' / (1 + x^2)\n\n");
-
-                case OP_ARCCTG:
-                    RETURN_AND_DUMP(MUL_(
-                                        NUM_(-1),
-                                        DIV_(
-                                            dR,
-                                            ADD_(
-                                                NUM_(1),
-                                                POW_(cR, NUM_(2))
-                                            )
-                                        )
-                                    ), "differential of arcctg is (arcctg(x))' = -x' / (1 + x^2)\n\n");
-                case OP_LOG:
-                    switch(GetVarPosType(node, DiffVarName)) {
-                        case NUMNUM:
-                            RETURN_AND_DUMP(NUM_(0), "differential of log of two nums is 0\n\n");
-                        case VARNUM:
-                            RETURN_AND_DUMP(MUL_(
-                                                MUL_(
-                                                    DIV_(
-                                                        POW_(
-                                                            LOG_(cL, cR),
-                                                            NUM_(2)
-                                                        ),
-                                                        MUL_(
-                                                            cR,
-                                                            LN_(cR)
-                                                        )
-                                                    ),
-                                                    NUM_(-1)
-                                                ),
-                                                dR
-                                            ), "differential of log when var is at the base is (log_x (a))\' = -(log^(-2)_x (a) * x\') / (x * ln(a))\n\n");
-                        case NUMVAR:
-                            RETURN_AND_DUMP(DIV_(
-                                                dR,
-                                                MUL_(
-                                                    LN_(cL),
-                                                    cR
-                                                )
-                                            ), "differential of log when at the base is num is (log_a (x))\' = x\' / (x * ln(a))\n\n");
-                        case VARVAR:
-                            RETURN_AND_DUMP(DIV_(
-                                                SUB_(
-                                                    MUL_(
-                                                        DIV_(
-                                                            dR,
-                                                            cR
-                                                        ),
-                                                        LN_(cL)
-                                                    ),
-                                                    MUL_(
-                                                        DIV_(
-                                                            dL,
-                                                            cL
-                                                        ),
-                                                        LN_(cR)
-                                                    )
-                                                ),
-                                                POW_(
-                                                    LN_(cL),
-                                                    NUM_(2)
-                                                )
-                                            ), "differential of log when everywhere is var (log_u (v))\' = (v\' / v * u - u\' / u * v) / ln^2(u)\n\n");
-                    }
+                case OP_ADD:    return DiffOpAdd(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_SUB:    return DiffOpSub(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_MUL:    return DiffOpMul(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_DIV:    return DiffOpDiv(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_POW:    return DiffOpPow(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_LN:     return DiffOpLn(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_LOG:    return DiffOpLog(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_SIN:    return DiffOpSin(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_COS:    return DiffOpCos(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_TG:     return DiffOpTg(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_CTG:    return DiffOpCtg(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_ARCSIN: return DiffOpArcsin(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_ARCCOS: return DiffOpArccos(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_ARCTG:  return DiffOpArctg(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_ARCCTG: return DiffOpArcctg(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_SH:     return DiffOpSh(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_CH:     return DiffOpCh(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_TH:     return DiffOpTh(fp, node, num_of_nodes, DiffVarName, need_dump);
+                case OP_CTH:    return DiffOpCth(fp, node, num_of_nodes, DiffVarName, need_dump);
+                default:        return NULL;
             }
-        case TYPE_VAR:
-            if (strcmp(node->value.var.name, DiffVarName) == 0) {
-                RETURN_AND_DUMP(NUM_(1), "differential of variable, which we are differentiating with is 1");
-            }
-            else {
-                RETURN_AND_DUMP(NUM_(0), "differential of variable, which we are NOT differentiating with is 0");
-            }
-        
+        default:
+            return NULL;
     }
-
-    return NULL;
 }
 
 Node_t * BuildTailorMonomial(const char *DiffVarName, double a, size_t n) {
@@ -485,6 +596,7 @@ Node_t * BuildTailorMonomial(const char *DiffVarName, double a, size_t n) {
                 NUM_(n)
             );
 }
+
 
 #define DUMPNODE_IFNEEDDUMP(need_dump, ...) \
     if (need_dump)\
@@ -532,7 +644,7 @@ DiffTree_t *GetLatexTailorSeries(DiffTree_t *tree, const char *DiffVarName, doub
     TreeDtorDiff(TreeCopy);
 
     if (error.is_error == true) {
-        print_error(error, errors_text);
+        print_error(errors_text);
         return NULL;
     }
     
@@ -581,9 +693,7 @@ TreeErr MakeTreeFromFile(DiffTree_t *tree, const char * file_name) {
     char *start_of_file_buffer = file_buffer;
     sassert(file_buffer, ERR_PTR_NULL);
 
-    size_t actually_read = fread(file_buffer, sizeof(char), file_size, fp);
-    if (actually_read == 0)
-        ADD_ERROR_AND_RETURN(ERR_FILE_INVALID, "read 0 bytes in file %s", file_name);
+    file_buffer = fgets(file_buffer, file_size, fp);
     fclose(fp);
 
     int pos = 0;
@@ -611,13 +721,51 @@ Node_t * optimize_and_differentiate(FILE *fp, Node_t *node, const char *DiffVarN
     OptimizeTree(DiffNode, num_of_derivative);
     if (need_dump) {
         fprintf(fp, "\\begin{coloredbox}{green!5!white}{green!60!black}\n"
-                    "\\textbf{После наилегчайших тривиальных оптимизаций получаем результат:}\\newline\n"
-                    "$f^{(%zu)}(x) = ", num_of_derivative);
-        DumpNodesToLatexRec(DiffNode, fp, false);
-        fprintf(fp, "$\n"
-                    "\\end{coloredbox}\n");
+                    "\\textbf{пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:}\\newline\n");
+        INRESIZEBOX(
+                    fprintf(fp, "$f^{(%zu)}(x) = ", num_of_derivative);
+                    DumpNodesToLatexRec(DiffNode, fp, false);
+                    fprintf(fp, "$\n");
+        );
+        fprintf(fp, "\\end{coloredbox}\n");
     }
     return DiffNode;
+}
+
+void PrintLatexFunctionResults(DiffTree_t *tree, DiffTree_t *TailorTree, size_t NthDerivative, double point, double accuracy) {
+    sassert(tree,       ERR_PTR_NULL);
+    sassert(TailorTree, ERR_PTR_NULL);
+    FILE *fp = fopen(DumpLatexFileName, "a");
+    sassert(fp, ERR_PTR_NULL);
+
+    fprintf(fp, "\\section{пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:}\n");
+
+    INCOLOREDBOX(blue, black,
+            fprintf(fp, "\\textbf{пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ}$:\\newline\n");
+            fprintf(fp, "\\func");
+    )
+    fprintf(fp, "\n\n");
+
+    
+    INCOLOREDBOX(red, black,
+        fprintf(fp, "\\textbf{пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ $o(x - \\TailorPoint)^\\TailorAccuracy}$\\newline\n");
+        INRESIZEBOX(
+            fprintf(fp, "f(x) \\approx ");
+            DumpNodesToLatexRec(TailorTree->root, fp, false);
+            fprintf(fp, " + o{(x - \\TailorPoint)}^{\\TailorAccuracy}}\n");
+        )
+    )
+    fprintf(fp, "\n\n");
+
+
+    for (size_t i = 1; i <= NthDerivative; i++) {
+        INCOLOREDBOX(green, black,
+            fprintf(fp, "\\textbf{%zu пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ}$:\\newline\n", i);
+            fprintf(fp, "\\Derivative%c\n", 'a' + (char) i - 1);
+        )
+    }
+
+    fclose(fp);
 }
 
 DiffTree_t *GetNthDerivative(DiffTree_t * tree, const char *DiffVarName, size_t num, bool need_dump) {
@@ -626,8 +774,9 @@ DiffTree_t *GetNthDerivative(DiffTree_t * tree, const char *DiffVarName, size_t 
 
     TreeCtorDiff(TreeCopy);
     TreeCopy->root = CopyNodes(tree->root);
+    TreeCopy->num_of_nodes = GetNumOfNodes(TreeCopy->root);
     if (need_dump)
-        fprintf(fp, "\\section{Производные всех порядков (ну, почти, только до %zu)}\n"
+        fprintf(fp, "\\section{пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ %zu)}\n"
                     "\\label{sec:derivatives}\n", num);
 
     for (size_t i = 1; i <= num; i++) {
@@ -635,136 +784,89 @@ DiffTree_t *GetNthDerivative(DiffTree_t * tree, const char *DiffVarName, size_t 
             if (need_dump) {
                 switch (i) {
                     case 1:
-                        fprintf(fp, "\\subsection{Первая производная}\n\n"
+                        fprintf(fp, "\\subsection{пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ}\n\n"
                                     "\\begin{coloredbox}{purple!5!white}{purple!60!black}\n"
-                                    "\\textbf{Результат допроса №1:}\\\\[0.4em]\n"
+                                    "\\textbf{пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ1:}\\\\[0.4em]\n"
                                     "\\[\n"
                                     "  \\Derivativea\n"
                                     "\\]\n"
-                                    "Допрашиваемый дал нам немного информации о своем\n"
-                                    "карьерном росте и скорости развития, хороший прогресс\n"
+                                    "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ\n"
+                                    "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n"
                                     "\\end{coloredbox}\n\n"
                                     "\\begin{imgbox}{gray!20}{memes/wolf%d.jpg}\n"
-                                    "Если хотите узнать больше о человеке - возьмите его производную\n"
-                                    "Ведь она дает много информации о его значении\n"
+                                    "пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n"
+                                    "пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n"
                                     "\\end{imgbox}\n\n", RandomWolf);
                         break;
                     case 2:
-                        fprintf(fp, "\\subsection{Вторая производная}\n\n"
+                        fprintf(fp, "\\subsection{пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ}\n\n"
                                     "\\begin{coloredbox}{yellow!5!white}{yellow!60!black}\n"
-                                    "\\textbf{Результат допроса №2}\\\\[0.4em]\n"
+                                    "\\textbf{пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ2}\\\\[0.4em]\n"
                                     "\\[\n"
                                     "  \\Derivativeb\n"
                                     "\\]\n"
-                                    "Теперь функция отвечает уже не за скорость изменений, а за изменение скорости изменений.\n"
-                                    "Оно растет и становится больше!!!!\n"
+                                    "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.\n"
+                                    "пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ!!!!\n"
                                     "\\end{coloredbox}\n\n"
                                     "\\begin{coloredbox}{green!5!white}{green!60!black}\n"
-                                    "\\textbf{Комментарий дерева.}\\\\[0.4em]\n"
-                                    "Ха, легчайшая, не почувствовал пока вычислял\n"
+                                    "\\textbf{пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.}\\\\[0.4em]\n"
+                                    "пїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n"
                                     "\\end{coloredbox}\n\n");
                         break;
                     case 3:
-                        fprintf(fp, "\\subsection{Третья производная}\n\n"
+                        fprintf(fp, "\\subsection{пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ}\n\n"
                                     "\\begin{coloredbox}{orange!5!white}{orange!50!black}\n"
-                                    "\\textbf{Результат автоматического допроса №3.}\\\\[0.4em]\n"
+                                    "\\textbf{пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ3.}\\\\[0.4em]\n"
                                     "\\[\n"
                                     "  \\Derivativec\n"
                                     "\\]\n"
-                                    "Теперь функция указывает на скорость изменения скорости изменения от скорости изменения\n"
-                                    "И зачем это придумали?\n"
+                                    "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n"
+                                    "пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ?\n"
                                     "\\end{coloredbox}\n\n"
                                     "\\begin{coloredbox}{green!5!white}{green!60!black}\n"
-                                    "\\textbf{Комментарий дерева.}\\\\[0.4em]\n");
+                                    "\\textbf{пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.}\\\\[0.4em]\n");
                         if (TreeCopy->num_of_nodes > 15)
-                            fprintf(fp, "ПамагитАауоте я оптимизировал это 39843 секунды\n");
+                            fprintf(fp, "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ 39843 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n");
                         else
-                            fprintf(fp, "Изи катка, даже ребенок так сможет\n");
+                            fprintf(fp, "пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ\n");
                         fprintf(fp, "\\end{coloredbox}\n\n"
                                     "\\begin{imgbox}{gray!20}{memes/wolf%d.jpg}\n"
-                                    "Настоящие волки ищут %zu производную не для того, чтобы вывести формулу n-ной,\n"
-                                    "или разложить в ряд тейлора, а так, для удовольствия\n"
+                                    "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ %zu пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ n-пїЅпїЅпїЅ,\n"
+                                    "пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n"
                                     "\\end{imgbox}\n\n", RandomWolf, i);
                         break;
                     default:
-                        fprintf(fp, "\\subsection{%zu производная}\n\n"
+                        fprintf(fp, "\\subsection{%zu пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ}\n\n"
                                     "\\begin{coloredbox}{orange!5!white}{orange!50!black}\n"
-                                    "\\textbf{Результат автоматического допроса №%zu.}\\\\[0.4em]\n"
+                                    "\\textbf{пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ%zu.}\\\\[0.4em]\n"
                                     "\\[\n"
                                     "  \\Derivative%c\n"
                                     "\\]\n"
-                                    "за что мне этоооо, нафига так много производных, ты что,\n"
-                                    "Семестровую ботаешь?!\n"
+                                    "пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅ,\n"
+                                    "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ?!\n"
                                     "\\end{coloredbox}\n\n"
                                     "\\begin{coloredbox}{green!5!white}{green!60!black}\n"
-                                    "\\textbf{Комментарий дерева.}\\\\[0.4em]\n", i, i, 'a' + (char) i - 1);
+                                    "\\textbf{пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.}\\\\[0.4em]\n", i, i, 'a' + (char) i - 1);
                         fprintf(fp, "Why Are We here, just to suffer?\n");
                         fprintf(fp, "\\end{coloredbox}\n\n"
                                     "\\begin{imgbox}{gray!20}{memes/wolf%d.jpg}\n"
-                                    "Ты не ты когда голоден, но еще больше ты не ты\n"
-                                    "когда нет ответов к варианту семестровой\n"
+                                    "пїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅ\n"
+                                    "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n"
                                     "\\end{imgbox}\n\n", RandomWolf);
                 }
             fprintf(fp, "\\begin{coloredbox}{blue!15!white}{blue!60!black}\n"
-                        "\\textbf{Как мы получили этот результат?\\newlineДелегируем ответ на этот вопрос на дерево!}\n"
+                        "\\textbf{пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ?\\newlineпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ!}\n"
                         "\\end{coloredbox}");
             }
         TreeCopy->root = optimize_and_differentiate(fp, TreeCopy->root, DiffVarName, i, need_dump);
         char ch = 'a' + i - 1;
         if (!need_dump) {
-            fprintf(fp, "\\newcommand{\\Derivative%c}{f^{(%zu)}(%s) = ", ch, i, DiffVarName);
+            fprintf(fp, "\\newcommand{\\Derivative%c}{\\resizebox{\\minof{\\width}{\\textwidth}}{!}{$\\displaystyle f^{(%zu)}(%s) = ", ch, i, DiffVarName);
             DumpNodesToLatexRec(TreeCopy->root, fp, false);
-            fprintf(fp, "}\n\n");
+            fprintf(fp, "$}}\n\n");
         }
     }
 
     fclose(fp);
     return TreeCopy;
-}
-
-
-int main(int argc, char * argv[]) {
-    srand(time(NULL));
-    if (argc != 2 || strncmp(argv[1], "--", 2) != 0) {
-        print_help();
-        return OK;
-    }
-    char * file_name = argv[1] + 2;
-    const char *argument = "x";
-
-    STARTTXTDUMPS();
-    TreeCtorDiff(tree);
-    MakeTreeFromFile(tree, file_name);
-
-    PrintLatexVarsInTxt(tree, STD_TEILORPOINT, STD_NTHDERIVATIVE, STD_TEILORACCURACY);
-
-    DiffTree_t *DerivativeTree1 = GetNthDerivative(tree, argument, STD_NTHDERIVATIVE, false);
-    DiffTree_t *DerivativeTree2 = GetNthDerivative(tree, argument, STD_NTHDERIVATIVE, true);
-    DiffTree_t *TailorTree      = GetLatexTailorSeries(tree, argument, STD_TEILORPOINT, STD_TEILORACCURACY, true);
-    DiffTree_t *FirstDerivative = GetNthDerivative(tree, argument, 1, false);
-    DiffTree_t *TangentTree     = GetTangentTree(tree, FirstDerivative, STD_TANGENTPOINT, argument);
-    LatexPrintCringe(argument);
-
-    char *FileNameGraph = PrintGnuplotGraphOfFunc(tree, TailorTree, TangentTree, argument, -10, 10);
-
-    WriteLatexFuncPic(tree->root, TailorTree->root, TangentTree->root, FileNameGraph, STD_TANGENTPOINT, STD_TEILORPOINT);
-    WriteLatexMeme(tree->root, argument, "memes/memediff1.png");
-    WriteLatexMeme(tree->root, argument, "memes/memediff2.jpg");
-
-    FINISHTXTDUMPS();
-    MakePdfFromLatex();
-
-    free(FileNameGraph);
-    TreeDtorDiff(tree);
-    TreeDtorDiff(FirstDerivative);
-    TreeDtorDiff(DerivativeTree1);
-    TreeDtorDiff(DerivativeTree2);
-    TreeDtorDiff(TailorTree);
-    TreeDtorDiff(TangentTree);
-
-    if (error.is_error == true) {
-        print_error(error, errors_text);
-        return error.recently_added_error_int;
-    }
-    return 0;
 }

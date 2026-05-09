@@ -1,1 +1,0 @@
-("*"("x"nilnil)("+"("y"nilnil)("6"nilnil)))

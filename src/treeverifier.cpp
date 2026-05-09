@@ -40,15 +40,15 @@ TreeErr TreeVerify(DiffTree_t *tree) {
     sassert(tree, ERR_PTR_NULL);
 
     int counter = 0;
-    TreeErr err = AllNodesVerify(tree->root, &counter, tree);
+    int err = AllNodesVerify(tree->root, &counter, tree);
     // if (counter != tree->num_of_nodes) {
     //     ADD_ERROR_AND_RETURN(ERR_INVALID_SIZE, "size: %d, exp_size: %zu", counter, tree->num_of_nodes);
     // }
 
-    return err;
+    return (TreeErr) err;
 }
 
-TreeErr AllNodesVerify(Node_t* node, int *counter, DiffTree_t * tree) {
+int AllNodesVerify(Node_t* node, int *counter, DiffTree_t * tree) {
     if (node == NULL)
         return OK;
     CHECK_FUNC_AND_RET_IF_ERR(NodeVerify(node, tree->root));

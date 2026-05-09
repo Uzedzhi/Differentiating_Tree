@@ -1,1 +1,0 @@
-("+"("+"("ln"("0"nilnil)("x"nilnil))("*"("5"nilnil)("x"nilnil)))("*"("5"nilnil)("x"nilnil)))

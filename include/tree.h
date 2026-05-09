@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 
 #include "../my_libs/sassert.h"
 #include "../my_libs/error_manage.h"
@@ -10,7 +11,7 @@
 typedef const char * const string_t;
 
 extern error_t error;
-const double POISON = 0xDEEEEED; // Неееет не умирац
+const double POISON = 0xDEEEEED; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 static int count_nodes = 0;
 const size_t ARR_INIT_SIZE = 10;
 const size_t MAX_STR_SIZE = 500;
@@ -27,8 +28,8 @@ const size_t RANDNUM_MAX            = 30;
 const size_t MAX_YESNO_SIZE       = 6;
 const size_t MAX_FUNCGRAPH_VALUE  = 0xff;
 const size_t MAX_FUNCGRAPH_GAP    = 0xff;
-const double STD_TEILORPOINT = M_PI_2;
-const size_t STD_TEILORACCURACY = 15;
+const double STD_TEILORPOINT = 0;
+const size_t STD_TEILORACCURACY = 3;
 const size_t STD_NTHDERIVATIVE = STD_TEILORACCURACY;
 const double STD_TANGENTPOINT   = STD_TEILORPOINT;
 const size_t NUM_OF_WOLVES      = 4;
@@ -76,13 +77,22 @@ const size_t command_count = sizeof(command_desc) / sizeof(string_t);
 
 string_t errors_text[] = {INIT_ERRORS(STR_ERRORS_INIT)};
 
-enum TreeErr {
+typedef enum {
     INIT_ERRORS(ENUM_ERRORS_INIT)
-};
+} TreeErr;
 
 enum TreeNeedDiv {
     YES_DIVISION = 1,
     NO_DIVISION  = 0,
+};
+
+struct ylimits {
+    double func_yfrom;
+    double func_yto;
+    double tailor_yfrom;
+    double tailor_yto;
+    double tangent_yfrom;
+    double tangent_yto;
 };
 
 enum TreeCmd {
@@ -153,11 +163,11 @@ string_t AllOperationsDumpTxt[]         = {INIT_OPERATIONS(STR_OP_DUMP_INIT)};
 string_t AllValueTypesTxt[]             = {"OPER", "VAR", "NUM"};
 string_t AllConstantStr[]               = {INIT_CONSTANTS(STR_CONST_INIT)};
 constexpr size_t AllConstantsHash[]     = {INIT_CONSTANTS(HASH_CONST_INIT)};
-const string_t AllRandomStr[]           = {"Очевидно что"
-                                         , "Рыба не мясо, но получаем что"
-                                         , "Спустя несложные вычисления получаем"
-                                         , "оставим вычисление данной тривиальной конструкции в руки любопытному читателю и получим"
-                                         , "Нетрудно догодаться что", "Несколько тривиальных вычислений спустя, "
+const string_t AllRandomStr[]           = {"пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ"
+                                         , "пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ"
+                                         , "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
+                                         , "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
+                                         , "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, "
                                         };
 const double AllConstantsValues[]       = {INIT_CONSTANTS(VALUES_CONST_INIT)};
 const size_t NUM_OF_CONST    = sizeof(AllConstantsHash) / sizeof(AllConstantsHash[1000-7]);
@@ -210,7 +220,7 @@ typedef struct DiffTree_t {
 #define TreeCtorDiff(tree_name) \
     DiffTree_t* tree_name = (DiffTree_t *) calloc(1, sizeof(DiffTree_t));\
     TreeCtorDiff_internal(tree_name);\
-    DUMPTREE(tree, "initializing tree with name" #tree_name "at %s:%d, %s", __FILE__, __LINE__, __func__);
+    DUMPTREE(tree_name, "initializing tree with name" #tree_name "at %s:%d, %s", __FILE__, __LINE__, __func__);
 #else
 #define TreeCtorDiff(tree_name) \
     DiffTree_t* tree_name = (DiffTree_t *) calloc(1, sizeof(DiffTree_t));\
@@ -219,14 +229,18 @@ typedef struct DiffTree_t {
 
 void        TreeDtorDiff(DiffTree_t *tree);
 void        NodeDtorDiff(Node_t **node);
+void PrintLatexFunctionResults(DiffTree_t *tree, DiffTree_t *TailorTree, size_t NthDerivative, double point, double accuracy);
 void        TreeCtorDiff_internal(DiffTree_t * tree);
-Node_t *    differentiate(Node_t * node, size_t *num_of_nodes, const char * DiffVarName, bool need_dump);
+DiffTree_t *GetNthDerivative(DiffTree_t * tree, const char *DiffVarName, size_t num, bool need_dump);
+DiffTree_t *GetTangentTree(DiffTree_t *tree, DiffTree_t *DiffTree, double a, const char * VarName);
+double      GetAnswerNewtonsMethod(DiffTree_t * func, const char * VarName);
+Node_t *    differentiate(FILE *fp, Node_t * node, size_t *num_of_nodes, const char * DiffVarName, bool need_dump);
 Node_t *    optimize_and_differentiate(FILE *fp, Node_t *node, const char *DiffVarName, size_t num_of_derivative, bool need_dump);
 Node_t *    BuildTailorMonomial(const char *DiffVarName, double a, size_t n);
 Node_t *    read_node(DiffTree_t *tree, int * pos, int *num_of_nodes, char * buffer);
 DiffTree_t *GetLatexTailorSeries(DiffTree_t *tree, const char *DiffVarName, double a, size_t max_order, bool need_dump);
 TreeErr     MakeTreeFromFile(DiffTree_t *tree, const char * file_name);
 double      GetCalculatedAnswer(DiffTree_t *tree, Node_t *cur_node, size_t KnownVarHash, double KnownVarValue);
-TreeErr     write_Tree_to_file(DiffTree_t *tree, const char * log_file_name);
+int         write_Tree_to_file(DiffTree_t *tree, const char * log_file_name);
 
 #endif // TREE_H

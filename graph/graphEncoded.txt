@@ -9,146 +9,1646 @@ penwidth=1.2,
 margin="0.06,0.04"]
 {
 rank=0
-tree_node_info0x5060000005c0[style="rounded", label=<
+tree_node_info0x50600099afa0[style="rounded", label=<
 <TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060000005c0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">ADD</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099afa0</FONT> </TD></TR>
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: (nil)</FONT> </TD></TR>
 <TR>
-<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000000560</FONT></TD>
-<TD PORT="right"><FONT COLOR="#94a3b8">0x506000000440</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099af40</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000999260</FONT> <FONT COLOR="#db2777">R</FONT></TD>
 </TR>
 </TABLE>>]
 }
 {
 rank=0
-tree_node_info0x5060000005c0[style="rounded", label=<
+tree_node_info0x50600099afa0[style="rounded", label=<
 <TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060000005c0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">ADD</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099afa0</FONT> </TD></TR>
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: (nil)</FONT> </TD></TR>
 <TR>
-<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000000560</FONT></TD>
-<TD PORT="right"><FONT COLOR="#94a3b8">0x506000000440</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099af40</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000999260</FONT> <FONT COLOR="#db2777">R</FONT></TD>
 </TR>
 </TABLE>>]
 }
-tree_node_info0x5060000005c0:left->tree_node_info0x506000000560[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+tree_node_info0x50600099afa0:left->tree_node_info0x50600099af40[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
 {
 rank=0
-tree_node_info0x506000000560[style="rounded", label=<
+tree_node_info0x50600099af40[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">ADD</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099af40</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099afa0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099aee0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x50600099a040</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099af40:left->tree_node_info0x50600099aee0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099aee0[style="rounded", label=<
 <TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000000560</FONT> </TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060000005c0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099aee0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099af40</FONT> </TD></TR>
 <TR>
-<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000000500</FONT></TD>
-<TD PORT="right"><FONT COLOR="#94a3b8">0x5060000004a0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099ae80</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x50600099a0a0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
 </TR>
 </TABLE>>]
 }
-tree_node_info0x506000000560:left->tree_node_info0x506000000500[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+tree_node_info0x50600099aee0:left->tree_node_info0x50600099ae80[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
 {
 rank=0
-tree_node_info0x506000000500[style="rounded", label=<
+tree_node_info0x50600099ae80[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099ae80</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099aee0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099ae20</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x50600099aa00</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099ae80:left->tree_node_info0x50600099ae20[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099ae20[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099ae20</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099ae80</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099adc0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x50600099aa60</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099ae20:left->tree_node_info0x50600099adc0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099adc0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">SIN</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099adc0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099ae20</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099ad60</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x50600099aac0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099adc0:left->tree_node_info0x50600099ad60[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099ad60[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">0.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099ad60</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099adc0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099adc0:right->tree_node_info0x50600099aac0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099aac0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">ADD</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099aac0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099adc0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099ab20</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x50600099ad00</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099aac0:left->tree_node_info0x50600099ab20[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099ab20[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099ab20</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099aac0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099ab80</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x50600099abe0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099ab20:left->tree_node_info0x50600099ab80[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099ab80[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">15.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099ab80</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099ab20</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099ab20:right->tree_node_info0x50600099abe0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099abe0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">POW</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099abe0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099ab20</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099ac40</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x50600099aca0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099abe0:left->tree_node_info0x50600099ac40[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099ac40[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">VAR</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">x</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099ac40</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099abe0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099abe0:right->tree_node_info0x50600099aca0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099aca0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">3.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099aca0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099abe0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099aac0:right->tree_node_info0x50600099ad00[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099ad00[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">4.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099ad00</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099aac0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099ae20:right->tree_node_info0x50600099aa60[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099aa60[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">-1.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099aa60</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099ae20</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099ae80:right->tree_node_info0x50600099aa00[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099aa00[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099aa00</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099ae80</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099a700</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x50600099a6a0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099aa00:left->tree_node_info0x50600099a700[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099a700[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">15.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099a700</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099aa00</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099aa00:right->tree_node_info0x50600099a6a0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099a6a0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099a6a0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099aa00</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099a5e0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x50600099a580</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099a6a0:left->tree_node_info0x50600099a5e0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099a5e0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">3.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099a5e0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099a6a0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099a6a0:right->tree_node_info0x50600099a580[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099a580[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">POW</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099a580</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099a6a0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099a520</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x50600099a4c0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099a580:left->tree_node_info0x50600099a520[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099a520[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">VAR</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">x</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099a520</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099a580</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099a580:right->tree_node_info0x50600099a4c0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099a4c0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">2.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099a4c0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099a580</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099aee0:right->tree_node_info0x50600099a0a0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099a0a0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099a0a0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099aee0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099a100</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x50600099a160</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099a0a0:left->tree_node_info0x50600099a100[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099a100[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">15.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099a100</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099a0a0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099a0a0:right->tree_node_info0x50600099a160[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099a160[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099a160</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099a0a0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099a1c0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x50600099a220</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099a160:left->tree_node_info0x50600099a1c0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099a1c0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">3.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099a1c0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099a160</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099a160:right->tree_node_info0x50600099a220[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099a220[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">POW</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099a220</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099a160</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x50600099a280</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x50600099a2e0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099a220:left->tree_node_info0x50600099a280[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099a280[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">VAR</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">x</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099a280</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099a220</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099a220:right->tree_node_info0x50600099a2e0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099a2e0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">2.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099a2e0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099a220</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099af40:right->tree_node_info0x50600099a040[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x50600099a040[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x50600099a040</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099af40</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000999ce0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000999c80</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099a040:left->tree_node_info0x506000999ce0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000999ce0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">COS</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000999ce0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099a040</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000999d40</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000999da0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000999ce0:left->tree_node_info0x506000999d40[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000999d40[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">0.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000999d40</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000999ce0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000999ce0:right->tree_node_info0x506000999da0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000999da0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">ADD</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000999da0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000999ce0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000999e00</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000999fe0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000999da0:left->tree_node_info0x506000999e00[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000999e00[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000999e00</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000999da0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000999e60</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000999ec0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000999e00:left->tree_node_info0x506000999e60[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000999e60[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">15.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000999e60</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000999e00</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000999e00:right->tree_node_info0x506000999ec0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000999ec0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">POW</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000999ec0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000999e00</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000999f20</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000999f80</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000999ec0:left->tree_node_info0x506000999f20[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000999f20[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">VAR</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">x</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000999f20</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000999ec0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000999ec0:right->tree_node_info0x506000999f80[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000999f80[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">3.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000999f80</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000999ec0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000999da0:right->tree_node_info0x506000999fe0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000999fe0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">4.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000999fe0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000999da0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099a040:right->tree_node_info0x506000999c80[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000999c80[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000999c80</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099a040</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000999920</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x5060009998c0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000999c80:left->tree_node_info0x506000999920[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000999920[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">15.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000999920</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000999c80</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000999c80:right->tree_node_info0x5060009998c0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009998c0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009998c0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000999c80</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000999620</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x5060009995c0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009998c0:left->tree_node_info0x506000999620[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000999620[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">3.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000999620</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009998c0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009998c0:right->tree_node_info0x5060009995c0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009995c0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009995c0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009998c0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000999500</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x5060009994a0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009995c0:left->tree_node_info0x506000999500[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000999500[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">2.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000999500</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009995c0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009995c0:right->tree_node_info0x5060009994a0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009994a0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">VAR</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">x</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009994a0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009995c0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x50600099afa0:right->tree_node_info0x506000999260[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000999260[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">ADD</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000999260</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x50600099afa0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000999200</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000997be0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000999260:left->tree_node_info0x506000999200[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000999200[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000999200</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000999260</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x5060009991a0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000997c40</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000999200:left->tree_node_info0x5060009991a0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009991a0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009991a0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000999200</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000998cc0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000998c60</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009991a0:left->tree_node_info0x506000998cc0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998cc0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">3.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998cc0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009991a0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009991a0:right->tree_node_info0x506000998c60[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998c60[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998c60</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009991a0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000998c00</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000998720</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000998c60:left->tree_node_info0x506000998c00[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998c00[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998c00</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998c60</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000998ba0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000998b40</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000998c00:left->tree_node_info0x506000998ba0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998ba0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">2.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998ba0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998c00</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000998c00:right->tree_node_info0x506000998b40[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998b40[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">POW</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998b40</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998c00</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x5060009988a0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000998840</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000998b40:left->tree_node_info0x5060009988a0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009988a0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">COS</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009988a0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998b40</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000998900</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000998960</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009988a0:left->tree_node_info0x506000998900[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998900[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">0.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998900</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009988a0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009988a0:right->tree_node_info0x506000998960[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998960[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">ADD</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998960</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009988a0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x5060009989c0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000998ae0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000998960:left->tree_node_info0x5060009989c0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009989c0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009989c0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998960</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000998a20</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000998a80</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009989c0:left->tree_node_info0x506000998a20[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998a20[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">10.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998a20</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009989c0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009989c0:right->tree_node_info0x506000998a80[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998a80[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">VAR</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">x</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998a80</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009989c0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000998960:right->tree_node_info0x506000998ae0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998ae0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">5.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998ae0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998960</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000998b40:right->tree_node_info0x506000998840[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998840[style="rounded", label=<
 <TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">1.000000</FONT></TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000000500</FONT> </TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000000560</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998840</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998b40</FONT> </TD></TR>
 <TR>
 <TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
 <TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
 </TR>
 </TABLE>>]
 }
-tree_node_info0x506000000560:right->tree_node_info0x5060000004a0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+tree_node_info0x506000998c60:right->tree_node_info0x506000998720[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
 {
 rank=0
-tree_node_info0x5060000004a0[style="rounded", label=<
-<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">VAR</FONT> </TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">x</FONT></TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060000004a0</FONT> </TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000000560</FONT> </TD></TR>
-<TR>
-<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
-<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
-</TR>
-</TABLE>>]
-}
-tree_node_info0x5060000005c0:right->tree_node_info0x506000000440[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
-{
-rank=0
-tree_node_info0x506000000440[style="rounded", label=<
+tree_node_info0x506000998720[style="rounded", label=<
 <TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000000440</FONT> </TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060000005c0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998720</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998c60</FONT> </TD></TR>
 <TR>
-<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x5060000003e0</FONT></TD>
-<TD PORT="right"><FONT COLOR="#94a3b8">0x506000000380</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x5060009986c0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000998360</FONT> <FONT COLOR="#db2777">R</FONT></TD>
 </TR>
 </TABLE>>]
 }
-tree_node_info0x506000000440:left->tree_node_info0x5060000003e0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+tree_node_info0x506000998720:left->tree_node_info0x5060009986c0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
 {
 rank=0
-tree_node_info0x5060000003e0[style="rounded", label=<
-<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">VAR</FONT> </TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">x</FONT></TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060000003e0</FONT> </TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000000440</FONT> </TD></TR>
-<TR>
-<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
-<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
-</TR>
-</TABLE>>]
-}
-tree_node_info0x506000000440:right->tree_node_info0x506000000380[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
-{
-rank=0
-tree_node_info0x506000000380[style="rounded", label=<
+tree_node_info0x5060009986c0[style="rounded", label=<
 <TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000000380</FONT> </TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000000440</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009986c0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998720</FONT> </TD></TR>
 <TR>
-<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000000320</FONT></TD>
-<TD PORT="right"><FONT COLOR="#94a3b8">0x5060000002c0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000998660</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x5060009983c0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
 </TR>
 </TABLE>>]
 }
-tree_node_info0x506000000380:left->tree_node_info0x506000000320[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+tree_node_info0x5060009986c0:left->tree_node_info0x506000998660[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
 {
 rank=0
-tree_node_info0x506000000320[style="rounded", label=<
+tree_node_info0x506000998660[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">SIN</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998660</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009986c0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000998600</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000998420</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000998660:left->tree_node_info0x506000998600[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998600[style="rounded", label=<
 <TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">0.000000</FONT></TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000000320</FONT> </TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000000380</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998600</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998660</FONT> </TD></TR>
 <TR>
 <TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
 <TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
 </TR>
 </TABLE>>]
 }
-tree_node_info0x506000000380:right->tree_node_info0x5060000002c0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+tree_node_info0x506000998660:right->tree_node_info0x506000998420[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
 {
 rank=0
-tree_node_info0x5060000002c0[style="rounded", label=<
+tree_node_info0x506000998420[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">ADD</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998420</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998660</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000998480</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x5060009985a0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000998420:left->tree_node_info0x506000998480[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998480[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998480</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998420</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x5060009984e0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000998540</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000998480:left->tree_node_info0x5060009984e0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009984e0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">10.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009984e0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998480</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000998480:right->tree_node_info0x506000998540[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998540[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">VAR</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">x</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998540</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998480</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000998420:right->tree_node_info0x5060009985a0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009985a0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">5.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009985a0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998420</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009986c0:right->tree_node_info0x5060009983c0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009983c0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">-1.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009983c0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009986c0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000998720:right->tree_node_info0x506000998360[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998360[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">10.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998360</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000998720</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000999200:right->tree_node_info0x506000997c40[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997c40[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997c40</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000999200</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000997ca0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000998000</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997c40:left->tree_node_info0x506000997ca0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997ca0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997ca0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997c40</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000997d00</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000997fa0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997ca0:left->tree_node_info0x506000997d00[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997d00[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">SIN</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997d00</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997ca0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000997d60</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000997dc0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997d00:left->tree_node_info0x506000997d60[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997d60[style="rounded", label=<
 <TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
 <TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">0.000000</FONT></TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060000002c0</FONT> </TD></TR>
-<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000000380</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997d60</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997d00</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997d00:right->tree_node_info0x506000997dc0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997dc0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">ADD</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997dc0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997d00</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000997e20</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000997f40</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997dc0:left->tree_node_info0x506000997e20[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997e20[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997e20</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997dc0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000997e80</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000997ee0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997e20:left->tree_node_info0x506000997e80[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997e80[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">10.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997e80</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997e20</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997e20:right->tree_node_info0x506000997ee0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997ee0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">VAR</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">x</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997ee0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997e20</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997dc0:right->tree_node_info0x506000997f40[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997f40[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">5.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997f40</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997dc0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997ca0:right->tree_node_info0x506000997fa0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997fa0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">-1.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997fa0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997ca0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997c40:right->tree_node_info0x506000998000[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000998000[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">10.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000998000</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997c40</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000999260:right->tree_node_info0x506000997be0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997be0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997be0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000999260</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x5060009977c0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000997760</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997be0:left->tree_node_info0x5060009977c0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009977c0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009977c0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997be0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000997820</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000997880</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009977c0:left->tree_node_info0x506000997820[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997820[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">3.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997820</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009977c0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009977c0:right->tree_node_info0x506000997880[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997880[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">POW</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997880</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009977c0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x5060009978e0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000997b80</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997880:left->tree_node_info0x5060009978e0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009978e0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">COS</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009978e0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997880</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000997940</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x5060009979a0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009978e0:left->tree_node_info0x506000997940[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997940[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">0.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997940</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009978e0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009978e0:right->tree_node_info0x5060009979a0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009979a0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">ADD</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009979a0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009978e0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000997a00</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000997b20</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009979a0:left->tree_node_info0x506000997a00[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997a00[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997a00</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009979a0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000997a60</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000997ac0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997a00:left->tree_node_info0x506000997a60[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997a60[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">10.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997a60</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997a00</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997a00:right->tree_node_info0x506000997ac0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997ac0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">VAR</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">x</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997ac0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997a00</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009979a0:right->tree_node_info0x506000997b20[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997b20[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">5.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997b20</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009979a0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997880:right->tree_node_info0x506000997b80[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997b80[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">2.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997b80</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997880</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997be0:right->tree_node_info0x506000997760[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997760[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997760</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997be0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x5060009976a0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000996bc0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997760:left->tree_node_info0x5060009976a0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009976a0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009976a0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997760</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x5060009975e0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000996f80</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009976a0:left->tree_node_info0x5060009975e0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009975e0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009975e0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009976a0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000997580</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x5060009972e0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009975e0:left->tree_node_info0x506000997580[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997580[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">COS</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997580</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009975e0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000997520</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000997340</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997580:left->tree_node_info0x506000997520[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997520[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">0.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997520</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997580</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997580:right->tree_node_info0x506000997340[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997340[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">ADD</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997340</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997580</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x5060009973a0</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x5060009974c0</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997340:left->tree_node_info0x5060009973a0[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009973a0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">OPER</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">MUL</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009973a0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997340</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">0x506000997400</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">0x506000997460</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009973a0:left->tree_node_info0x506000997400[color="#2563eb", label="L", fontcolor="#0000ff" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997400[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">10.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997400</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009973a0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009973a0:right->tree_node_info0x506000997460[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000997460[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">VAR</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">x</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000997460</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009973a0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997340:right->tree_node_info0x5060009974c0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009974c0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">5.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009974c0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997340</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009975e0:right->tree_node_info0x5060009972e0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x5060009972e0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">10.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x5060009972e0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009975e0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x5060009976a0:right->tree_node_info0x506000996f80[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000996f80[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">-1.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000996f80</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x5060009976a0</FONT> </TD></TR>
+<TR>
+<TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
+<TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
+</TR>
+</TABLE>>]
+}
+tree_node_info0x506000997760:right->tree_node_info0x506000996bc0[color="#db2777", label="R", fontcolor="#ff0000" , minlen=2]
+{
+rank=0
+tree_node_info0x506000996bc0[style="rounded", label=<
+<TABLE BORDER="0" CELLSPACING="0" CELLBORDER="0" BGCOLOR="#ffffff">
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> type = </FONT> <FONT POINT-SIZE="18">NUM</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="16" COLOR="#4d545eff"> val = </FONT> <FONT POINT-SIZE="18">10.000000</FONT></TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">address: 0x506000996bc0</FONT> </TD></TR>
+<TR><TD COLSPAN="2"> <FONT POINT-SIZE="14" COLOR="#64748B">parent: 0x506000997760</FONT> </TD></TR>
 <TR>
 <TD PORT="left" ><FONT COLOR="#2563eb">L</FONT> <FONT COLOR="#94a3b8">(nil)</FONT></TD>
 <TD PORT="right"><FONT COLOR="#94a3b8">(nil)</FONT> <FONT COLOR="#db2777">R</FONT></TD>
